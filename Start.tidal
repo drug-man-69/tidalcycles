@@ -1,8 +1,10 @@
 
 // Exploring TidcalCycles for the first time
 
+// https://tidalcycles.org/index.php/Tutorial
 
-d1 $ sound "bd:1"
+
+d1 $ sound "bd invaders:5"
 
 
 // kill d1 audio
@@ -13,3 +15,7 @@ d1 silence
 // hush it all up
 
 hush
+
+
+
+// Import 36,000 clips from Masterpeice Randomizer WAVs and scrub with Tidal
