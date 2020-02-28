@@ -8,6 +8,10 @@ d1 $ sound "invaders:2"
 
 // This does the same thing. I have no idea why.
 
+d1 $ sound "bd" # n "3"
+
+// play around with multiple tracks
+
 d1 $ sound "hh hh hh hh hh hh hh hh hh hh hh hh"
 
 d1 $ sound "hh hh hh hh hh hh"
