@@ -4,13 +4,23 @@
 // https://tidalcycles.org/index.php/Tutorial
 
 
-d1 $ sound "bd invaders:5"
+d1 $ sound "invaders:2"
 
+// This does the same thing. I have no idea why.
+
+d1 $ sound "hh hh hh hh hh hh hh hh hh hh hh hh"
+
+d1 $ sound "hh hh hh hh hh hh"
+
+d2 $ sound "arpy"
+
+d3 $ sound "bd bd:23 bd bd:23"
+
+hush
 
 // kill d1 audio
 
 d1 silence
-
 
 // hush it all up
 
