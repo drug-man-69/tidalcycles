@@ -58,6 +58,27 @@ d1 $ sound "[bd sd sd bd sd sd bd] [cp cp [bd dork2:3]]"
 hush
 
 
+// Use periods as an alternative to brackets. Porbably not great for nesting? I honestly don't get how this works
+
+d1 $ sound "bd bd . sd sd sd . bd sd"
+
+d1 $ sound "[bd bd] [sd sd sd] [bd sd]"
+
+hush
+
+// Layering sounds within a pattern
+
+d1 $ sound "[bd bd [bd bd], sd [cp cp cp] sd cp, hh hh hh hh hh hh hh hh hh hh hh hh]"
+
+hush
+
+
+
+
+
+
+
+
 
 // Play around some more
 
