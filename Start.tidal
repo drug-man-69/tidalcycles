@@ -1,11 +1,15 @@
 // Exploring TidcalCycles for the first time
 
 
+
+
 d1 $ sound "bd:1"
 
-// stop d1 from making audio
+
+// kill d1 audio
 
 d1 silence
+
 
 // hush it all up
 
