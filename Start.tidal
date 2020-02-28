@@ -22,13 +22,44 @@ d3 $ sound "bd bd:23 bd bd:23"
 
 hush
 
+// Arbitrary names for tracks might be useful later on
+
+p "gerard" $ sound "hh hh hh hh"
+
 // kill d1 audio
 
-d1 silence
+d2 silence
 
 // hush it all up
 
 hush
+
+// Rest on the clap
+
+d1 $ sound "~ cp"
+
+d2 $ sound "bd"
+
+hush
+
+// Solo functionality
+
+solo 1
+
+unsolo 1
+
+
+// Patterns within patterns. Splits the 1 second cycle and smashes everything in the brackets within the first half of the cycle then gives the clap the rest of the second half of the cycle duration. Neato cheeto.
+
+d1 $ sound "[bd sd sd bd sd sd bd] [cp cp [sn [sn sn bd]]]"
+
+d1 $ sound "[bd sd sd bd sd sd bd] [cp cp [bd dork2:3]]"
+
+hush
+
+
+
+// Play around some more
 
 
 
