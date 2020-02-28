@@ -1,0 +1,11 @@
+// I am using this to explore TidcalCycles for the first time
+
+
+
+d1 $ sound "coins:6"
+
+// stop d1 from making audio
+d1 silence
+
+// hush it all up
+hush
