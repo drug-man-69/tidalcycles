@@ -1,10 +1,12 @@
 // Exploring TidcalCycles for the first time
 
 
-d1 $ sound "coins:6"
+d1 $ sound "bd:1"
 
 // stop d1 from making audio
+
 d1 silence
 
 // hush it all up
+
 hush
