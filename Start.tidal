@@ -72,10 +72,42 @@ d1 $ sound "[bd bd [bd bd], sd [cp cp cp] sd cp, hh hh hh hh hh hh hh hh hh hh h
 
 hush
 
+// Layering poly instead of grouping
+
+d1 $ sound "[bd bd bd bd, sd cp sd cp]"
+
+hush
+
+// Play one step within a pattern per cycle with brackets
+
+d1 $ sound "bd <arpy:1 arpy:2 arpy:3>"
+
+hush
+
+// division and multiplication can be used to slow down or speed up a pattern * /
+
+d1 $ sound "[bd bd*2 [bd bd]*2, hh*12]"
+
+d1 $ sound "[bd sn sn*3]/2 [bd sn*3 bd*4]/3"
+
+d1 $ sound "[bd [sn sn]*2]/2 [bd [sn bd]/2]*2"
+
+hush
 
 
 
 
+// Use functions to transform a pattern
+
+d1 $ rev (sound "bd*4 arpy sd ")
+
+d1 $ sound "bd*4 arpy sd "
+
+// 'every' takes three parameters: a number, a function and a pattern to apply the function to.
+
+d1 $ every 4 (rev) (sound "bd*4 arpy sd ")
+
+hush
 
 
 
