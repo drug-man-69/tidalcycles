@@ -1,6 +1,8 @@
 
 // First attempt at writing music
 
+// Samples can be found at https://bbpwc.com/shared/github/tidalcycles/ 
+
 hush
 
 d1 $ sound "behrg:2 behrg:4 behrg:6 behrg:6 behrg:9 airman:7 behrg:2"
