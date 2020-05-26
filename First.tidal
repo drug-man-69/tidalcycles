@@ -1,0 +1,8 @@
+
+// First attempt at writing music
+
+hush
+
+d1 $ sound "behrg:2 behrg:4 behrg:6 behrg:6 behrg:9 airman:7 behrg:2"
+
+d2 $ sound "airman:1 airman:9 airman:9 airman:9 airman:5 airman:1 airman:4"
