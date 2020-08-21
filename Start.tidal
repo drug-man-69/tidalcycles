@@ -4,7 +4,7 @@
 // https://tidalcycles.org/index.php/Tutorial
 
 
-d1 $ sound "invaders:2"
+d1 $ sound "invaders:1"
 
 // This does the same thing. I have no idea why.
 
@@ -28,7 +28,7 @@ p "gerard" $ sound "hh hh hh hh"
 
 // kill d1 audio
 
-d2 silence
+d1 silence
 
 // hush it all up
 
@@ -58,15 +58,15 @@ d1 $ sound "[bd sd sd bd sd sd bd] [cp cp [bd dork2:3]]"
 hush
 
 
-// Use periods as an alternative to brackets. Porbably not great for nesting? I honestly don't get how this works
+// Use periods as an alternative to brackets. Prolly can't nest with this though.
 
-d1 $ sound "bd bd . sd sd sd . bd sd"
+d1 $ sound "bd . sn sn sn sn sn . cp sd"
 
-d1 $ sound "[bd bd] [sd sd sd] [bd sd]"
+d1 $ sound "[[bd bd] ~] [sn sn sn ~ sn sn] [cp sd]"
 
 hush
 
-// Layering sounds within a pattern
+// Layering sounds within a pattern using a comma
 
 d1 $ sound "[bd bd [bd bd], sd [cp cp cp] sd cp, hh hh hh hh hh hh hh hh hh hh hh hh]"
 
@@ -76,32 +76,43 @@ hush
 
 d1 $ sound "[bd bd bd bd, sd cp sd cp]"
 
+d1 $ sound "[bd bd bd bd, cp sd cp sd cp]"
+
 hush
 
 // Play one step within a pattern per cycle with brackets
 
-d1 $ sound "bd <arpy:1 arpy:2 arpy:3>"
+d1 $ sound "bd <sn cp sd>"
+
+d1 $ sound "<airman airman:2 airman:4 airman:5> bd <cp sd arpy:8> cp cp"
+
+d1 $ sound "bd <cp sd [sn cp cp sn sn sn sn sn sn]>"
 
 hush
 
-// division and multiplication can be used to slow down or speed up a pattern * /
+// division and multiplication can be used to manipulate pattern structure * /
 
-d1 $ sound "[bd bd*2 [bd bd]*2, hh*12]"
+d2 $ sound "[bd bd*2 [cp cp]*2, hh*12]"
 
-d1 $ sound "[bd sn sn*3]/2 [bd sn*3 bd*4]/3"
+d2 $ sound "[bd sn sn*3]/2 [bd sn*3 bd*4]/3"
 
 d1 $ sound "[bd [sn sn]*2]/2 [bd [sn bd]/2]*2"
 
+d1 $ sound "[<airman:7 cp airman:8>*2, <airman:4 bd> ,<airman:2 hh airman:1>*3]*2"
+
+d1 $ sound "airman:1*8"
+
 hush
 
 
 
 
-// Use functions to transform a pattern
 
-d1 $ rev (sound "bd*4 arpy sd ")
+// Use multiply and divide functions to transform a pattern
 
-d1 $ sound "bd*4 arpy sd "
+d1 $ rev (sound "bd*4 arpy sd")
+
+d1 $ sound "bd*4 arpy sd"
 
 // 'every' takes three parameters: a number, a function and a pattern to apply the function to.
 
@@ -111,8 +122,49 @@ hush
 
 
 
+// You can "operate on the inner pattern of sample names, instead of the outer pattern of synthesier triggers that sound gives you". what does this mean? Is it more cpu efficient to operate on sample names?
 
-// Play around some more
+d1 $ sound (every 4 (fast 4) "bd*2 [bd [sn sn*2 sn] sn]")
+
+d1 $ every 4 (fast 4) $ sound "bd*2 [bd [sn sn*2 sn] sn]"
+
+hush
+
+
+// Adding effects
+
+d1 $ sound "bd*90" # crush "4 2 3 1 1 8 8 8 8 8" # speed "6 2 1 4 3 4 9 1 1 1 1 1 1 1 1 2 2 2 2 9 9 9 9 9 9 9 9 9 9 9"
+
+hush
+
+
+
+d2 $ sound "bd bd cp*4" # gain (every 3 (rev) $ "3 1 2 0.7")
+
+hush
+
+
+
+d1 $ gain "1 0.8 0.5 0.7 1 1 1 1 2 [0.1 0.1 0.1] 2 3 [5 5 5]*2 2 3 1" # sound "bd"
+
+d1 $ gain "1 0.8 0.5 0.7 1 1 1 1 2 [4 4 4] 2 3 [5 5 5]*2 2 3 1" # sound "bd"
+
+
+// ok this is getting insane though
+
+d1 $ gain "1 0.8 0.5 0.7 1 1 1 1 2 [0.1 0.1 0.1] 2 3 [5 5 5]*2 2 3 1" # sound "airman:6"
+
+d1 $ gain "1 0.8 0.5 0.7 1 1 1 1 2 [4 4 4] 2 3 [5 5 5]*2 2 3 1" # sound "airman:5"
+
+d1 $ gain "1 0.8 0.5 0.7 [4 4 4 4 4 4] 1 1 1 2 [4 4 4] 2 3 [5 5 5]*2 2 3 1" # sound "airman:6"
+
+hush
+
+
+
+
+
+
 
 
 
