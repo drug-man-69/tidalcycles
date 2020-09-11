@@ -405,6 +405,7 @@ d1 $ stack [
   degradeBy 0.80 $ sound "cp*16" # gain "1.1"
 ]
 
+
 d1 $ stack [
   degradeBy 0.60 $ sound "airman:5*16",
   degradeBy 0.40 $ sound "airman:10*16",
@@ -414,11 +415,59 @@ d1 $ stack [
 
 d2 $ sound "airman:9*16" # speed "0.8" # end "0.9" # gain "0.8" # crush 1
 
+unsolo 1
+
+solo 1
+
 hush
 
 
-// start with D2 for two seconds then execute D1 stack 2. After this begins to sink in fade volume in on
-a gradular smear of the first lead synth //
+// start with D2 for two seconds then execute D1 stack 3. After this begins to sink in fade volume in on
+a granular smear of the first lead synth //
+
+
+
+d1 $ stack [
+  degradeBy 0.60 $ sound "airman:5*16",
+  degradeBy 0.40 $ sound "airman:10*16",
+  degradeBy 0.40 $ sound "[airman:8, airman:1]*16",
+  degradeBy 0.80 $ sound "cp*16" # gain "1.1"
+] # speed (slow 4 $ range 4 (-4) $ tri)
+
+
+d1 $ stack [
+  degradeBy 0.60 $ sound "airman:5*16",
+  degradeBy 0.40 $ sound "airman:10*16",
+  degradeBy 0.40 $ sound "[airman:8, airman:1]*16",
+  degradeBy 0.80 $ sound "cp*16" # gain "1.1"
+] # speed (slow 64 $ range (0.3) 4 $ tri)
+
+hush
+
+
+d1 $ stack [
+  degradeBy 0.60 $ sound "airman:5*16",
+  degradeBy 0.40 $ sound "airman:10*16",
+  degradeBy 0.40 $ sound "[airman:8, airman:1]*16",
+  degradeBy 0.80 $ sound "cp*16" # gain "1.1"
+] # speed (slow 64 $ range 0.7 2 $ tri) # cut "1"
+
+
+d2 $ stack [
+  sound (samples "arpy*4" (run 16)) # speed "0.25" # cut "1",
+  sound (samples "bass2*4" (run 16)) # speed "0.5" # cut "1"
+  ] # cutoff (fast 1 $ range "200" "500" $ tri)
+
+hush
+
+
+
+
+
+
+
+
+
 
 
 
