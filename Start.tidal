@@ -265,6 +265,7 @@ d2 $ sound "hh:8*16" # cutoff (range 50 4000 $ slow 0.09 $ sine) # resonance "0.
 
 hush
 
+
 d1 $ sound "{bd hh sn cp, arpy bass2 drum notes can}"
 
 d1 $ sound "[notes bass:6, bd bd bd bd bd bd bd cp]"
@@ -391,6 +392,11 @@ d1 $ stack [
 
 
 
+
+
+
+
+
 d1 $ stack [
   degradeBy 0.60 $ sound "airman:5*16",
   degradeBy 0.40 $ sound "airman:10*16",
@@ -398,10 +404,19 @@ d1 $ stack [
   degradeBy 0.80 $ sound "cp*16" # gain "1.1"
 ]
 
+hush
+
 d1 $ stack [
   degradeBy 0.60 $ sound "airman:5*16",
   degradeBy 0.40 $ sound "airman:10*16",
   degradeBy 0.40 $ sound "[airman:7, airman:3]*16",
+  degradeBy 0.80 $ sound "cp*16" # gain "1.1"
+]
+
+xfadeIn 1 6 $ stack [
+  degradeBy 0.60 $ sound "airman:5*16",
+  degradeBy 0.40 $ sound "airman:10*16",
+  degradeBy 0.40 $ sound "[airman:8, airman:1]*16",
   degradeBy 0.80 $ sound "cp*16" # gain "1.1"
 ]
 
@@ -411,16 +426,17 @@ d1 $ stack [
   degradeBy 0.40 $ sound "airman:10*16",
   degradeBy 0.40 $ sound "[airman:6, airman:1]*16",
   degradeBy 0.80 $ sound "cp*16" # gain "1.1"
-  ]
+]
 
 d2 $ sound "airman:9*16" # speed "0.8" # end "0.9" # gain "0.8" # crush 1
 
-unsolo 1
+d2 $ silence
 
-solo 1
+xfadeIn 3 8 $ sound "airman:8*256" # begin (range 0.2 0.3 $ rand) # gain (range 0 0.9 $ fast 256 $ sine)
+
+d2 $ silence
 
 hush
-
 
 // start with D2 for two seconds then execute D1 stack 3. After this begins to sink in fade volume in on
 a granular smear of the first lead synth //
@@ -453,10 +469,57 @@ d1 $ stack [
 ] # speed (slow 64 $ range 0.7 2 $ tri) # cut "1"
 
 
+
+d2 $ stack [
+  sound (samples "arpy*4" (run 16)) # speed "0.25" # gain "1.1" # cut "1",
+  sound (samples "bass2*4" (run 16)) # speed "0.5" # gain "0.4" # cut "1"
+  ] # cutoff (slow 1.9 $ range "200" "400" $ tri)
+
+
 d2 $ stack [
   sound (samples "arpy*4" (run 16)) # speed "0.25" # cut "1",
-  sound (samples "bass2*4" (run 16)) # speed "0.5" # cut "1"
-  ] # cutoff (fast 1 $ range "200" "500" $ tri)
+  sound (samples "bass2*4" (run 16)) # speed "0.5" # gain "0.7" # cut "1"
+  ] # cutoff (slow 1.9 $ range "300" "600" $ tri)
+
+d2 $ silence
+
+hush
+
+
+
+d1 $ n "[0 2 4 7 ~] 1 ~ 9 5"*3-7 # s "midi"
+
+d1 $ silence
+
+once $ n "[0 2 4 7 ~] ~ ~ ~ ~"*3-31 # s "midi"
+
+once $ n "[0 2 4 7 ~] ~ ~ ~ ~"*3-38 # s "midi"
+
+once $ n "[0 2 4 7 ~] ~ ~ ~ ~"*3-27 # s "midi"
+
+once $ n "[0 2 4 7 ~] ~ ~ ~ ~"*3-26 # s "midi"
+
+setcps 0.4625
+
+setcps 0.5625
+
+
+// Pulse Width
+
+d2 $ ccv (range 0 127 $ fast 2 $ sine) # ccn 79 # s "midi"
+
+d2 $ silence
+
+once $ ccv 10 # ccn 79 # s "midi"
+
+
+
+once $ ccv 120 # ccn 7 # s "midi"
+
+d2 $ ccv "[10 20 40 50 60 70 80 90 110 120]*0" # ccn 7 # s "midi"
+
+d2 $ ccv (range 1 127 $ sine) # ccn 7 # s "midi"
+
 
 hush
 
@@ -464,18 +527,7 @@ hush
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+d1 $ sound "hh*32" # cutoff (range 200 2000 $ fast 3 $ sine) # resonance "0"
 
 
 
