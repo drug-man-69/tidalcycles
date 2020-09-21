@@ -1,6 +1,8 @@
 
 // Exploring TidcalCycles i'm screaming
 
+// While I go through the tutorial I will be pushing updates on this project to my github to get comfortable using git.
+
 // https://tidalcycles.org/index.php/Tutorial
 
 
@@ -487,11 +489,46 @@ hush
 
 
 
+
+
+
 d1 $ n "[0 2 4 7 ~] 1 ~ 9 5"*3-7 # s "midi"
+
+d1 $ n "[0 2 4 7 ~] ~ ~ ~ ~"*3-31 # s "midi"
+
+d1 $ n "[~ ~ ~ ~ ~] ~ ~ 9 5"*3-31 # s "midi"
 
 d1 $ silence
 
-once $ n "[0 2 4 7 ~] ~ ~ ~ ~"*3-31 # s "midi"
+once $ n "[0 2 4 7 ~ ~ ~ ~ ~]"*3-31 # s "midi" # midichan "0 1 2 3 ~ ~ ~ ~ ~"
+
+d1 $ n "[0 2 4 7]*2"*3-31 # s "midi" # midichan "1 2 3 4 3 3 1 2 2 1 4"
+
+hush
+
+d1 $ n "1*16"-2 # s "midi" # midichan 1
+
+d1 $ stack [
+  degradeBy 0.60 $ n "1*16"-2 # s "midi" # midichan 1,
+  degradeBy 0.40 $ n "1*16"-2 # s "midi" # midichan 2,
+  degradeBy 0.40 $ n "1*16"-2 # s "midi" # midichan 3,
+  degradeBy 0.80 $ n "1*16"-2 # s "midi" # midichan 4
+]
+
+
+
+d1 $ stack [
+  degradeBy 0.60 $ sound "airman:5*16",
+  degradeBy 0.40 $ sound "airman:10*16",
+  degradeBy 0.40 $ sound "[airman:8, airman:1]*16",
+  degradeBy 0.80 $ sound "cp*16" # gain "1.1"
+] # speed (slow 4 $ range 4 (-4) $ tri)
+
+
+
+
+// MIDI 1 is 16 on Nord
+
 
 once $ n "[0 2 4 7 ~] ~ ~ ~ ~"*3-38 # s "midi"
 
@@ -499,22 +536,28 @@ once $ n "[0 2 4 7 ~] ~ ~ ~ ~"*3-27 # s "midi"
 
 once $ n "[0 2 4 7 ~] ~ ~ ~ ~"*3-26 # s "midi"
 
-setcps 0.4625
+setcps 0.3625
 
 setcps 0.5625
 
 
+
 // Pulse Width
 
-d2 $ ccv (range 0 127 $ fast 2 $ sine) # ccn 79 # s "midi"
+once $ ccv 0 # ccn 79 # s "midi"
+
+
+// Set Gain
+
+once $ ccv 120 # ccn 7 # s "midi"
+
+
+
+
 
 d2 $ silence
 
-once $ ccv 10 # ccn 79 # s "midi"
-
-
-
-once $ ccv 120 # ccn 7 # s "midi"
+d2 $ ccv (range 0 127 $ fast 2 $ sine) # ccn 79 # s "midi"
 
 d2 $ ccv "[10 20 40 50 60 70 80 90 110 120]*0" # ccn 7 # s "midi"
 
