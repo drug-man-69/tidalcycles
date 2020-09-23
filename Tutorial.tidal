@@ -1,18 +1,18 @@
 
-// Exploring TidcalCycles i'm screaming
+-- Exploring TidcalCycles i'm screaming
 
-// While I go through the tutorial I will be pushing updates on this project to my github to get comfortable using git.
+-- While I go through the tutorial I will be pushing updates on this project to my github to get comfortable using git.
 
-// https://tidalcycles.org/index.php/Tutorial
+-- https://tidalcycles.org/index.php/Tutorial
 
 
 d1 $ sound "invaders:1"
 
-// This does the same thing. I have no idea why.
+-- This does the same thing. I have no idea why.
 
 d1 $ sound "bd" # n "3"
 
-// play around with multiple tracks
+-- play around with multiple tracks
 
 d1 $ sound "hh hh hh hh hh hh hh hh hh hh hh hh"
 
@@ -24,19 +24,19 @@ d3 $ sound "bd bd:23 bd bd:23"
 
 hush
 
-// Arbitrary names for tracks might be useful later on
+-- Arbitrary names for tracks might be useful later on
 
 p "gerard" $ sound "hh hh hh hh"
 
-// kill d1 audio
+-- kill d1 audio
 
 d1 silence
 
-// hush it all up
+-- hush it all up
 
 hush
 
-// Rest on the clap
+-- Rest on the clap
 
 d1 $ sound "~ cp"
 
@@ -44,14 +44,14 @@ d2 $ sound "bd"
 
 hush
 
-// Solo functionality
+-- Solo functionality
 
 solo 1
 
 unsolo 1
 
 
-// Patterns within patterns. Splits the 1 second cycle and smashes everything in the brackets within the first half of the cycle then gives the clap the rest of the second half of the cycle duration. Neato cheeto.
+-- Patterns within patterns. Splits the 1 second cycle and smashes everything in the brackets within the first half of the cycle then gives the clap the rest of the second half of the cycle duration. Neato cheeto.
 
 d1 $ sound "[bd sd sd bd sd sd bd] [cp cp [sn [sn sn bd]]]"
 
@@ -60,7 +60,7 @@ d1 $ sound "[bd sd sd bd sd sd bd] [cp cp [bd dork2:3]]"
 hush
 
 
-// Use periods as an alternative to brackets. Prolly can't nest with this though.
+-- Use periods as an alternative to brackets. Prolly can't nest with this though.
 
 d1 $ sound "bd . sn sn sn sn sn . cp sd"
 
@@ -68,13 +68,13 @@ d1 $ sound "[[bd bd] ~] [sn sn sn ~ sn sn] [cp sd]"
 
 hush
 
-// Layering sounds within a pattern using a comma
+-- Layering sounds within a pattern using a comma
 
 d1 $ sound "[bd bd [bd bd], sd [cp cp cp] sd cp, hh hh hh hh hh hh hh hh hh hh hh hh]"
 
 hush
 
-// Layering poly instead of grouping
+-- Layering poly instead of grouping
 
 d1 $ sound "[bd bd bd bd, sd cp sd cp]"
 
@@ -82,7 +82,7 @@ d1 $ sound "[bd bd bd bd, cp sd cp sd cp]"
 
 hush
 
-// Play one step within a pattern per cycle with brackets
+-- Play one step within a pattern per cycle with brackets
 
 d1 $ sound "bd <sn cp sd>"
 
@@ -92,7 +92,7 @@ d1 $ sound "bd <cp sd [sn cp cp sn sn sn sn sn sn]>"
 
 hush
 
-// division and multiplication can be used to manipulate pattern structure * /
+-- division and multiplication can be used to manipulate pattern structure * /
 
 d2 $ sound "[bd bd*2 [cp cp]*2, hh*12]"
 
@@ -110,13 +110,13 @@ hush
 
 
 
-// Use multiply and divide functions to transform a pattern
+-- Use multiply and divide functions to transform a pattern
 
 d1 $ rev (sound "bd*4 arpy sd")
 
 d1 $ sound "bd*4 arpy sd"
 
-// 'every' takes three parameters: a number, a function and a pattern to apply the function to.
+-- 'every' takes three parameters: a number, a function and a pattern to apply the function to.
 
 d1 $ every 4 (rev) (sound "bd*4 arpy sd ")
 
@@ -124,7 +124,7 @@ hush
 
 
 
-// You can "operate on the inner pattern of sample names, instead of the outer pattern of synthesier triggers that sound gives you". what does this mean? Is it more cpu efficient to operate on sample names?
+-- You can "operate on the inner pattern of sample names, instead of the outer pattern of synthesier triggers that sound gives you". what does this mean? Is it more cpu efficient to operate on sample names?
 
 d1 $ sound (every 4 (fast 4) "bd*2 [bd [sn sn*2 sn] sn]")
 
@@ -133,7 +133,7 @@ d1 $ every 4 (fast 4) $ sound "bd*2 [bd [sn sn*2 sn] sn]"
 hush
 
 
-// Adding effects
+-- Adding effects
 
 d1 $ sound "bd*90" # crush "4 2 3 1 1 8 8 8 8 8" # speed "6 2 1 4 3 4 9 1 1 1 1 1 1 1 1 2 2 2 2 9 9 9 9 9 9 9 9 9 9 9"
 
@@ -152,7 +152,7 @@ d1 $ gain "1 0.8 0.5 0.7 1 1 1 1 2 [0.1 0.1 0.1] 2 3 [5 5 5]*2 2 3 1" # sound "b
 d1 $ gain "1 0.8 0.5 0.7 1 1 1 1 2 [4 4 4] 2 3 [5 5 5]*2 2 3 1" # sound "bd:4"
 
 
-// ok this is getting insane though
+-- ok this is getting insane though
 
 d1 $ gain "1 0.8 0.5 0.7 1 1 1 1 2 [0.1 0.1 0.1] 2 3 [5 5 5]*2 2 3 1" # sound "airman:6"
 
@@ -196,7 +196,7 @@ d1 $ sound "bd(7,12)"
 
 d2 $ sound "bd"
 
-//  # cps (slow 90 $ range 0.9 20 saw)
+--  # cps (slow 90 $ range 0.9 20 saw)
 
 hush
 
@@ -209,7 +209,7 @@ hush
 d1 $ up (run 8) # sound "bd"
 
 
-// I don't understand this structure. Why two $?
+-- I don't understand this structure. Why two $?
 
 d1 $ sound "arpy*8" # up (every 2 (rev) $ run 8)
 
@@ -301,7 +301,7 @@ hush
 d1 $ sound "hh*32" # cutoff (range 200 2000 $ fast 3 $ sine) # resonance "0"
 
 
-// shift that shit
+-- shift that shit
 
 d1 $ sound "hh*8"
 
@@ -440,8 +440,8 @@ d2 $ silence
 
 hush
 
-// start with D2 for two seconds then execute D1 stack 3. After this begins to sink in fade volume in on
-a granular smear of the first lead synth //
+-- start with D2 for two seconds then execute D1 stack 3. After this begins to sink in fade volume in on
+a granular smear of the first lead synth --
 
 
 
@@ -490,9 +490,7 @@ hush
 
 
 
-
-
-d1 $ n "[0 2 4 7 ~] 1 ~ 9 5"*3-7 # s "midi"
+d1 $ n "[0 2 4 7 ~] 1 ~ 9 5"*3-7 # s "midi" # midichan 1
 
 d1 $ n "[0 2 4 7 ~] ~ ~ ~ ~"*3-31 # s "midi"
 
@@ -506,72 +504,12 @@ d1 $ n "[0 2 4 7]*2"*3-31 # s "midi" # midichan "1 2 3 4 3 3 1 2 2 1 4"
 
 hush
 
-d1 $ n "1*16"-2 # s "midi" # midichan 1
 
-d1 $ stack [
-  degradeBy 0.60 $ n "1*16"-2 # s "midi" # midichan 1,
-  degradeBy 0.40 $ n "1*16"-2 # s "midi" # midichan 2,
-  degradeBy 0.40 $ n "1*16"-2 # s "midi" # midichan 3,
-  degradeBy 0.80 $ n "1*16"-2 # s "midi" # midichan 4
-]
+once $ n "[0 2 4 7 ~] ~ ~ ~ ~"*3-38 # s "midi" # midichan 1
+
+once $ n "[0 2 4 7 ~] ~ ~ ~ ~"*3-27 # s "midi" # midichan 1
+
+once $ n "[0 2 4 7 ~] ~ ~ ~ ~"*3-26 # s "midi" # midichan 1
 
 
-
-d1 $ stack [
-  degradeBy 0.60 $ sound "airman:5*16",
-  degradeBy 0.40 $ sound "airman:10*16",
-  degradeBy 0.40 $ sound "[airman:8, airman:1]*16",
-  degradeBy 0.80 $ sound "cp*16" # gain "1.1"
-] # speed (slow 4 $ range 4 (-4) $ tri)
-
-
-
-
-// MIDI 1 is 16 on Nord
-
-
-once $ n "[0 2 4 7 ~] ~ ~ ~ ~"*3-38 # s "midi"
-
-once $ n "[0 2 4 7 ~] ~ ~ ~ ~"*3-27 # s "midi"
-
-once $ n "[0 2 4 7 ~] ~ ~ ~ ~"*3-26 # s "midi"
-
-setcps 0.3625
-
-setcps 0.5625
-
-
-
-// Pulse Width
-
-once $ ccv 0 # ccn 79 # s "midi"
-
-
-// Set Gain
-
-once $ ccv 120 # ccn 7 # s "midi"
-
-
-
-
-
-d2 $ silence
-
-d2 $ ccv (range 0 127 $ fast 2 $ sine) # ccn 79 # s "midi"
-
-d2 $ ccv "[10 20 40 50 60 70 80 90 110 120]*0" # ccn 7 # s "midi"
-
-d2 $ ccv (range 1 127 $ sine) # ccn 7 # s "midi"
-
-
-hush
-
-
-
-
-
-d1 $ sound "hh*32" # cutoff (range 200 2000 $ fast 3 $ sine) # resonance "0"
-
-
-
-// Import 36,000 clips from Masterpeice Randomizer WAVs and scrub with Tidal
+-- Import 36,000 clips from Masterpeice Randomizer WAVs and scrub with Tidal
